@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  app:
+    image: nestjs-102
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app/nestjs-102
+      - /app/nestjs-102/node_modules
+    environment:
+      - PORT=3000
+  db:
+    image: postgres:17
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=huevangxp
+      - POSTGRES_DB=nestjs-102
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
